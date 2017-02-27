@@ -21,9 +21,14 @@ namespace Pyatnashki
                 throw new Exception("Передано число параметров, не являющееся квадратом целого числа");
             }
 
-            // Еще проверки?
+            for (int i = 0; i < val.Length; i++)
+            {
+                if (val[i] < 0)
+                    throw new Exception("Не может быть отрицательных чисел");
+            }
+                // Еще проверки?
 
-            size = (int)Math.Sqrt(val.Length);
+                size = (int)Math.Sqrt(val.Length);
             field = new int[size, size];
 
             for (int i = 0; i < size; i++)

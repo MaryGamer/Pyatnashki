@@ -24,7 +24,7 @@ namespace Pyatnashki
         {
             try
             {
-            Game gmb = new Game(1, 2, 4, 3, 6, 8, 5, 0, 7);
+            Game gmb = new Game(1, 2, 4, 3, 6, 8, 5, 7, 0);
             Print(gmb);
 
             int n = 0;
