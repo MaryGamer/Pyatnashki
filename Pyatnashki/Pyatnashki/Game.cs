@@ -14,7 +14,7 @@ namespace Pyatnashki
         public int Len { get { return size; } }
         public int Value { get; set; }
 
-        public Game (params int[] val)
+        public Game(params int[] val)
         {
             if (Math.Sqrt(val.Length) != (int)Math.Sqrt(val.Length))
             {
@@ -24,11 +24,22 @@ namespace Pyatnashki
             for (int i = 0; i < val.Length; i++)
             {
                 if (val[i] < 0)
-                    throw new Exception("Не может быть отрицательных чисел");
+                    throw new Exception("В массиве не может быть отрицательных чисел");
             }
-                // Еще проверки?
 
-                size = (int)Math.Sqrt(val.Length);
+            int[] copy = new int[val.Length];
+            for (int i = 0; i < val.Length; i++)
+            {
+                copy[i] = val[i];
+            }
+            Array.Sort(copy);
+            for (int i = 0; i< val.Length; i++)
+            {
+                if (copy[i] != i)
+                    throw new Exception("Исходный массив содержит повторяющиеся числа");
+            }
+
+            size = (int)Math.Sqrt(val.Length);
             field = new int[size, size];
 
             for (int i = 0; i < size; i++)
@@ -40,7 +51,7 @@ namespace Pyatnashki
             }
         }
 
-        public int this[int x, int y] //индексатор
+        public int this[int x, int y] 
         {
             get
             {
@@ -62,7 +73,7 @@ namespace Pyatnashki
             }
             return new Point(-1, -1);
         }
-            
+
         public void Shift(int value)
         {
             Point loc = GetLocation(value);
@@ -97,8 +108,9 @@ namespace Pyatnashki
             {
                 for (int j = 0; j < size; j++)
                 {
-                    if (field[i, j] != (i * size + j + 1)
-                        && (field[i, j] != 0 && i == size - 1 && j == size - 1))
+                    if (field[i, j] != (i * size + j + 1) && (i != size - 1 || j != size - 1))
+                        return false;
+                    if (field[i, j] != 0 && i == size - 1 && j == size - 1)
                         return false;
                 }
             }
