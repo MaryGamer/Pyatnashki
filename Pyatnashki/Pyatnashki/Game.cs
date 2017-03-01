@@ -111,7 +111,9 @@ namespace Pyatnashki
             Point locV = GetLocation(value);
             Point loc0 = GetLocation(0);
 
-            if (!(locV.Column == loc0.Column || locV.Row == loc0.Row))
+            if (!((locV.Column == loc0.Column || locV.Row == loc0.Row)
+                && Math.Abs(locV.Column - loc0.Column) <= 1
+                && Math.Abs(locV.Row - loc0.Row) <= 1))
             {
                 throw new Exception("Нельзя двигать эту фишку!");
             }
