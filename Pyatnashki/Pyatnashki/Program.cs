@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Pyatnashki
 {
@@ -10,9 +11,9 @@ namespace Pyatnashki
     {
         static public void Print(Game gmb)
         {
-            for (int i = 0; i < gmb.Len; i++)
+            for (int i = 0; i < gmb.Length; i++)
             {
-                for (int j = 0; j < gmb.Len; j++)
+                for (int j = 0; j < gmb.Length; j++)
                 {
                     Console.Write(string.Format("{0}\t", gmb[i, j]));
                 }
@@ -24,7 +25,12 @@ namespace Pyatnashki
         {
             try
             {
-                Game gmb = new Game(1, 2, 4, 3, 6, 8, 5, 7, 0);
+                Console.WriteLine("Введите имя файла для чтения данных: ");
+                string filename = Console.ReadLine();
+                if (!File.Exists(filename)) throw new Exception("Нет такого файла");
+
+                Game gmb = Game.ReadCSV(filename);
+
                 Print(gmb);
 
                 int n = 0;
