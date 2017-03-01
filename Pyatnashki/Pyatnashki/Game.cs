@@ -33,7 +33,7 @@ namespace Pyatnashki
                 copy[i] = val[i];
             }
             Array.Sort(copy);
-            for (int i = 0; i< val.Length; i++)
+            for (int i = 0; i < val.Length; i++)
             {
                 if (copy[i] != i)
                     throw new Exception("Исходный массив содержит повторяющиеся числа");
@@ -51,7 +51,7 @@ namespace Pyatnashki
             }
         }
 
-        public int this[int x, int y] 
+        public int this[int x, int y]
         {
             get
             {

@@ -24,10 +24,10 @@ namespace Pyatnashki
         {
             try
             {
-            Game gmb = new Game(1, 2, 4, 3, 6, 8, 5, 7, 0);
-            Print(gmb);
+                Game gmb = new Game(1, 2, 4, 3, 6, 8, 5, 7, 0);
+                Print(gmb);
 
-            int n = 0;
+                int n = 0;
 
                 while (!gmb.EndGame())
                 {
